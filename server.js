@@ -7,9 +7,16 @@ app.use(express.static(path.join(__dirname, '')));
 
 server = app.listen(process.env.PORT || 5000);
 
-const io = require("socket.io")(server);
+//const io = require("socket.io")(server);
 
-const PORT = 3000 || process.env.PORT;
+const io = require("socket.io")(server,{
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"]
+      }
+});
+
+const PORT = 5000 || process.env.PORT;
 console.log(`Server running on port ${PORT}`);
 
 
